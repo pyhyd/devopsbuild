@@ -332,12 +332,17 @@
 	"Outputs" : {
 	  "WebsiteURL" : {
 		"Description" : "URL for newly created X stack",
-		"Value" : { "Fn::Join" : ["", ["http://", { "Fn::GetAtt" : [ "WebServerInstance", "PublicDnsName" ]}, ":8080/sample/"]] },
-        "Export" : {
-          "tomacturl" : { "Fn::Join" : ["", ["http://", { "Fn::GetAtt" : [ "WebServerInstance", "PublicDnsName" ]}, ":8080/sample/"]] },
-          "PublicDnsName" : { "Fn::GetAtt" : [ "WebServerInstance", "PublicDnsName" ]},
-          "ipaddress": { "Fn::GetAtt" : [ "WebServerInstance", "PublicIp" ]}
+		"Value" : { "Fn::Join" : ["", ["http://", { "Fn::GetAtt" : [ "WebServerInstance", "PublicDnsName" ]}, ":8080/sample/"]] }
+
+	  },
+      "publicDnsname" : {
+          "Description" : "publicdnsname",
+          "Value" : { "Fn::GetAtt" : [ "WebServerInstance", "PublicDnsName" ]}
+
+        },
+            "publicip" : {
+          "Description" : "publicip",
+              "Value": { "Fn::GetAtt" : [ "WebServerInstance", "PublicIp" ]}
         }
-	  }
 	}
   }
